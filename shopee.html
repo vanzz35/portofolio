@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopee Clone by Revan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f53d2d;
+      --light-bg: #fefefe;
+      --dark-bg: #0f172a;
+      --light-text: #333;
+      --dark-text: #f1f5f9;
+      --card: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --light-bg: #0f172a;
+      --light-text: #f1f5f9;
+      --card: #1e293b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      transition: 0.3s;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background-color: #fff;
+      color: var(--primary);
+      padding: 10px 16px;
+      border-radius: 6px;
+      margin: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .back-btn:hover {
+      background-color: #ffe2df;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 20px 10%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      background: white;
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .banner {
+      background: linear-gradient(90deg, #f53d2d, #ff9900);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      animation: slide 15s linear infinite;
+    }
+
+    @keyframes slide {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .search-bar {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .search-bar input {
+      width: 300px;
+      max-width: 90%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .product-section {
+      padding: 40px 10%;
+    }
+
+    .product-section h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 26px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: var(--card);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .product h4 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .product p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .price {
+      color: var(--primary);
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .rating {
+      color: gold;
+      margin: 5px 0;
+    }
+
+    .btn-cart {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tombol balik ke index.html -->
+  <a href="portofolio.html" class="back-btn">← Kembali ke Portofolio</a>
+
+  <header>
+    <h1>Shopee Revan</h1>
+    <div>
+      <nav>
+        <a href="#produk">Produk</a>
+        <a href="#promo">Promo</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <button class="theme-toggle" onclick="toggleTheme()">Ganti Tema</button>
+    </div>
+  </header>
+
+  <div class="banner">
+    🔥 PROMO HARI INI: Diskon hingga 50% semua produk elektronik! 🔥
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Cari produk..." onkeyup="filterProduk(this.value)">
+  </div>
+
+  <section class="product-section" id="produk">
+    <h3>Produk Terbaru</h3>
+    <div class="products" id="produkList">
+      <div class="product">
+        <img src="download (2).jpg" alt="Earphone">
+        <h4>Earphone ECLE Bluetooth</h4>
+        <div class="rating">★★★★★</div>
+        <p>HiFi Stereo | One Key Control</p>
+        <div class="price">Rp129.000</div>
+        <button class="btn-cart">Tambah ke Keranjang</button>
+      </div>
+      <div class="product">
+        <img src="download.jpg" alt="Kaos Arrogance">
+        <h4>Kaos Arrogance Hitam</h4>
+        <div class="rating">★★★★☆</div>
+        <p>Bahan adem dan sablon tajam</p>
+        <div class="price">Rp89.000</div>
+        <button class="btn-cart">Tambah ke Keranjang</button>
+      </div>
+      <div class="product">
+        <img src="download (1).jpg" alt="Sepatu Hitam">
+        <h4>Sepatu Sneakers Hitam</h4>
+        <div class="rating">★★★★★</div>
+        <p>Ringan dan nyaman dipakai</p>
+        <div class="price">Rp199.000</div>
+        <button class="btn-cart">Tambah ke Keranjang</button>
+      </div>
+    </div>
+  </section>
+
+  <footer id="kontak">
+    &copy; 2025 Shopee Revan | Dibuat dengan ❤ di SMK
+  </footer>
+
+  <script>
+    // Ganti tema terang/gelap
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+
+    // Filter produk berdasarkan pencarian
+    function filterProduk(value) {
+      const cards = document.querySelectorAll('.product');
+      value = value.toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('h4').textContent.toLowerCase();
+        card.style.display = title.includes(value) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
